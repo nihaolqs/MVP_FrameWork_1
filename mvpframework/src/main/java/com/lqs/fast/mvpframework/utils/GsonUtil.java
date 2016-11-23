@@ -40,6 +40,7 @@ public final class GsonUtil {
         HttpUtil.getString(url, new HttpUtil.HttpListener<String>() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
                 Log.d("Json错误","Json下载失败");
             }
 
@@ -55,6 +56,7 @@ public final class GsonUtil {
         HttpUtil.getString(url, new HttpUtil.HttpListener<String>() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
                 Log.d("Json错误","Json下载失败");
             }
 
@@ -69,6 +71,7 @@ public final class GsonUtil {
         HttpUtil.getString(url, new HttpUtil.HttpListener<String>() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
                 Log.d("Json错误","Json下载失败");
             }
 
@@ -84,6 +87,7 @@ public final class GsonUtil {
         HttpUtil.getString(url,map, new HttpUtil.HttpListener<String>() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                volleyError.printStackTrace();
                 Log.d("Json错误","Json下载失败");
             }
 

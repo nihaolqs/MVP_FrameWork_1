@@ -11,6 +11,11 @@ public final class FileUtil {
 
     private FileUtil(){}
 
+    /**
+     * 截断url获取文件名
+     * @param pathandname
+     * @return
+     */
     public static String getFileName(String pathandname) {
 
         int start = pathandname.lastIndexOf("/");
@@ -22,6 +27,11 @@ public final class FileUtil {
         }
     }
 
+    /**
+     * 格式化下载速度显示
+     * @param speed
+     * @return
+     */
     public static String formatDownLoadSpeed(long speed){
         StringBuffer sb = new StringBuffer();
         double kb = speed / 1024.0; //KB
@@ -36,6 +46,11 @@ public final class FileUtil {
         return sb.toString();
     }
 
+    /**
+     * 格式化文件大小
+     * @param size
+     * @return
+     */
     public static String formatSize(long size){
         StringBuffer sb = new StringBuffer();
         double k = size / 1024.0;

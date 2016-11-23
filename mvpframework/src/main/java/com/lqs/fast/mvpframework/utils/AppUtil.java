@@ -22,6 +22,12 @@ public final class AppUtil {
     private AppUtil() {
     }
 
+    /**
+     * 通过包名检查应用是否安装
+     * @param context
+     * @param packageName 包名
+     * @return 是否安装
+     */
     public static boolean checkApkInstalled(Context context, String packageName) {
         final PackageManager packageManager = context.getPackageManager();
         List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);
@@ -36,6 +42,11 @@ public final class AppUtil {
         return false;
     }
 
+    /**
+     * 通过包名启动App
+     * @param context
+     * @param appPackageName
+     */
     public static void startAPk(Context context, String appPackageName) {
         try {
             Intent intent = context.getPackageManager().getLaunchIntentForPackage(appPackageName);
@@ -45,6 +56,12 @@ public final class AppUtil {
         }
     }
 
+    /**
+     * 安装APP的方法(兼容7.0+)
+     * @param context
+     * @param filePath
+     * @param fileProvider
+     */
     public static void installApk(Context context, String filePath, String fileProvider) {
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -61,6 +78,11 @@ public final class AppUtil {
         context.startActivity(intent);
     }
 
+    /**
+     * 通过包名卸载应用
+     * @param context
+     * @param packageName
+     */
     public static void unInstallApk(Context context, String packageName) {
         Uri uri = Uri.parse("package:" + packageName);
 
@@ -68,6 +90,11 @@ public final class AppUtil {
         context.startActivity(intent);
     }
 
+    /**
+     * 通过file调用适配应用打开文件
+     * @param file
+     * @param context
+     */
     public static void openFile(File file, Context context) {
         Intent var2 = new Intent();
         var2.addFlags(268435456);

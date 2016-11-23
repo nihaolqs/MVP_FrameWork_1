@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lqs.fast.mvpframework.base.IClassTAG;
 import com.lqs.fast.mvpframework.base.presenter.ABasePresenter;
 import com.lqs.fast.mvpframework.base.ui.ABaseFragment;
 
@@ -16,9 +17,9 @@ import java.util.HashMap;
  * Created by dell on 2016/11/22.
  */
 
-public abstract class ABaseView extends ABaseFragment {
+public abstract class ABaseView extends ABaseFragment implements IClassTAG{
 
-    private HashMap<String, ABasePresenter> mPresenterMap = new HashMap<>();
+    protected HashMap<String, ABasePresenter> mPresenterMap = new HashMap<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,5 +102,17 @@ public abstract class ABaseView extends ABaseFragment {
         for (ABasePresenter presenter : mPresenterMap.values()) {
             presenter.onActivityResult(requestCode,resultCode,data);
         }
+    }
+
+    public void addPresenter(ABasePresenter presenter) {
+        mPresenterMap.put(presenter.getTAG(), presenter);
+    }
+
+    public ABasePresenter getPresenterForTag(String tag) {
+        ABasePresenter presenter = mPresenterMap.get(tag);
+        if (presenter == null) {
+            throw new RuntimeException(tag + "/获取不到Presenter");
+        }
+        return presenter;
     }
 }
