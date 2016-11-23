@@ -15,34 +15,45 @@ import java.util.List;
  * Created by dell on 2016/11/22.
  */
 
-public abstract class MySimpleAdatpter<VO extends IListVO> extends BaseAdapter{
+public abstract class MySimpleAdatpter<VO extends IListVO> extends BaseAdapter {
 
     private List<VO> mVoList;
 
-    public MySimpleAdatpter(Context context, List<VO> voList){
+    public MySimpleAdatpter(Context context, List<VO> voList) {
         this.mVoList = voList;
     }
+
     @Override
     public int getCount() {
         return mVoList.size();
     }
 
     @Override
-    public Object getItem(int i) {
+    public Object getItem(int position) {
         return null;
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View itemlayout = getItemlayout();
-
-        return itemlayout;
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
+        VO vo = mVoList.get(position);
+        if (convertView == null) {
+            convertView = getItemlayout(vo.getItemType());
+            Object viewHolder = getViewHolder(vo.getItemType());
+            convertView.setTag(viewHolder);
+        }
+        Object tag = convertView.getTag();
+        initItemView(convertView,tag,vo);
+        return convertView;
     }
 
-    protected abstract View getItemlayout();
+    protected abstract void initItemView(View convertView, Object tag, VO vo);
+
+    protected abstract Object getViewHolder(int itemType);
+
+    protected abstract View getItemlayout(int itemType);
 }

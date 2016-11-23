@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 24
     buildToolsVersion "24.0.2"
-
     defaultConfig {
         applicationId "com.lqs.fast.mvpframework"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 
@@ -20,6 +19,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -27,7 +28,16 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.code.gson:gson:2.2.4+'
     testCompile 'junit:junit:4.12'
     compile 'com.squareup:otto:+'
+//    compile files('libs/volly-1.0.11.jar')
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.facebook.fresco:animated-gif:0.12.0'
+    compile 'com.facebook.fresco:animated-webp:0.12.0'
+    compile 'com.facebook.fresco:webpsupport:0.12.0'
+    compile 'com.facebook.fresco:imagepipeline-okhttp3:0.12.0+'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.android.support:design:24.2.1'
 }
