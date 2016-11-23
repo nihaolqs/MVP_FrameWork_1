@@ -17,7 +17,7 @@ import java.util.HashMap;
  * Created by dell on 2016/11/22.
  */
 
-public abstract class ABaseView extends ABaseFragment implements IClassTAG{
+public abstract class ABaseView extends ABaseFragment implements IClassTAG {
 
     protected HashMap<String, ABasePresenter> mPresenterMap = new HashMap<>();
 
@@ -100,7 +100,7 @@ public abstract class ABaseView extends ABaseFragment implements IClassTAG{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         for (ABasePresenter presenter : mPresenterMap.values()) {
-            presenter.onActivityResult(requestCode,resultCode,data);
+            presenter.onActivityResult(requestCode, resultCode, data);
         }
     }
 
