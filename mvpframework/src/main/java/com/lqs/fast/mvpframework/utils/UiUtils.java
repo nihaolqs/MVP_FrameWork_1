@@ -11,11 +11,11 @@ import android.view.View;
 public class UiUtils {
     private static LayoutInflater sInflater;
     public static void initUiUtils(Context context){
-        sInflater = LayoutInflater.from(context);
+        sInflater = LayoutInflater.from(context.getApplicationContext());
     }
-    public static View inflaterLayout(int res) throws Exception {
+    public static View inflaterLayout(int res) throws RuntimeException {
         if(sInflater == null){
-            throw new Exception("UiUtils没有初始化");
+            throw new RuntimeException("UiUtils没有初始化");
         }
         View view = sInflater.inflate(res,null);
         return view;

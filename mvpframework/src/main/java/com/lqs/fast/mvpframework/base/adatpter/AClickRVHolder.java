@@ -7,7 +7,7 @@ import android.view.View;
  * Created by dell on 2016/11/23.
  */
 
-public class AClickRVHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+public abstract class AClickRVHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
     private BaseRVAdatpter.IRVItemClickListener mClickListener;
 

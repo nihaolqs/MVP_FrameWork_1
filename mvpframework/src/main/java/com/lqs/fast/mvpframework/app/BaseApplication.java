@@ -3,6 +3,7 @@ package com.lqs.fast.mvpframework.app;
 import android.app.Application;
 import android.os.Handler;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lqs.fast.mvpframework.event.SingleHandler;
 
 /**
@@ -14,5 +15,6 @@ public class BaseApplication extends Application{
     public void onCreate() {
         super.onCreate();
         SingleHandler.initHandler(this);
+
     }
 }
