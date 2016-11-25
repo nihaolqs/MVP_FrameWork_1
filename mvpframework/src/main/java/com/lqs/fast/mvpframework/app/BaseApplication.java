@@ -15,6 +15,5 @@ public class BaseApplication extends Application{
     public void onCreate() {
         super.onCreate();
         SingleHandler.initHandler(this);
-
     }
 }

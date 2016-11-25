@@ -1,25 +1,19 @@
 package com.lqs.fast.mvpframework;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.lqs.fast.mvpframework.base.adatpter.AClickRVHolder;
 import com.lqs.fast.mvpframework.base.adatpter.BaseRVAdatpter;
 import com.lqs.fast.mvpframework.bean.vo.IListVO;
-import com.lqs.fast.mvpframework.utils.ImageUtils;
 import com.lqs.fast.mvpframework.utils.UiUtils;
 
 import java.util.ArrayList;

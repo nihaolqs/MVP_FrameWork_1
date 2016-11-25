@@ -23,21 +23,21 @@ import java.util.List;
 
 public abstract class BaseRVAdatpter<VO extends IListVO> extends RecyclerView.Adapter<AClickRVHolder> {
 
-    private static final int HEADER_VIEW_TYPE = 0xFFFFFF;
+    private static final int HEADER_VIEW_TYPE = 010000000000;    //HeaderView类型码
 
-    protected IRVItemClickListener mClickListener;
+    protected IRVItemClickListener mClickListener;   //点击监听
 
-    protected IRVItemLongClickListener mLongClickListener;
+    protected IRVItemLongClickListener mLongClickListener;  //长按点击监听
 
-    protected List<IListVO> mVoList = new ArrayList<>();
+    protected List<IListVO> mVoList = new ArrayList<>();   //数据列表
 
     @Override
     public int getItemCount() {
         return mVoList.size();
-    }
+    }   //行数
 
     @Override
-    public AClickRVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AClickRVHolder onCreateViewHolder(ViewGroup parent, int viewType) {   //创建ViewHolder
         if (viewType == HEADER_VIEW_TYPE) {
             View headerViewRoot = UiUtils.inflaterLayout(R.layout.recycler_view_root);
             return new HeaderViewHolder(headerViewRoot);
@@ -49,7 +49,7 @@ public abstract class BaseRVAdatpter<VO extends IListVO> extends RecyclerView.Ad
     protected abstract AClickRVHolder onCreateNoHeaderViewHolder(ViewGroup parent, int viewType);
 
     @Override
-    public void onBindViewHolder(AClickRVHolder holder, int position) {
+    public void onBindViewHolder(AClickRVHolder holder, int position) {   //Binder ViewHolder 初始化行数据
         int itemViewType = getItemViewType(position);
         if (itemViewType == HEADER_VIEW_TYPE) {
             View mHeaderView = ((HeaderVO) mVoList.get(position)).getmHeaderView();
@@ -62,7 +62,7 @@ public abstract class BaseRVAdatpter<VO extends IListVO> extends RecyclerView.Ad
     protected abstract void onBindNoHeaderViewHolder(AClickRVHolder holder, int position);
 
     @Override
-    public int getItemViewType(int position) {
+    public int getItemViewType(int position) {    //返回类型
         int itemType = mVoList.get(position).getItemType();
         return itemType;
     }
@@ -83,7 +83,7 @@ public abstract class BaseRVAdatpter<VO extends IListVO> extends RecyclerView.Ad
         this.mLongClickListener = longClickListener;
     }
 
-    public void addHeaderView(View headerview) {
+    public void addHeaderView(View headerview) {    //添加HeaderView类型的行
         HeaderVO e = new HeaderVO();
         e.setmHeaderView(headerview);
         this.mVoList.add(e);
@@ -91,6 +91,10 @@ public abstract class BaseRVAdatpter<VO extends IListVO> extends RecyclerView.Ad
 
     public void addDataList(List<VO> voList) {
         this.mVoList.addAll(voList);
+    }
+
+    public void clearData() {
+        this.mVoList.clear();
     }
 
     public int getHeaderViewCount(int posiction) {
