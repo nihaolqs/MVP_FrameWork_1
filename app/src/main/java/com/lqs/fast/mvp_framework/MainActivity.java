@@ -10,6 +10,7 @@ import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -202,11 +203,12 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
         mediaPlayer.setOnErrorListener(this);
         // 设置缓存变化监听
         mediaPlayer.setOnBufferingUpdateListener(this);
-        Uri uri = Uri.parse("http://183.61.13.14/vmind.qqvideo.tc.qq.com/x0200hkt1cg.p202.1.mp4");
+//        Uri uri = Uri.parse("http://183.61.13.14/vmind.qqvideo.tc.qq.com/x0200hkt1cg.p202.1.mp4");
+        Uri uri = Uri.parse("http://app.ipicpic.top:8092/bao/zsq75.mp4");
         try {
             // mediaPlayer.reset();
-            mediaPlayer.setDataSource(pathString);
-            // mediaPlayer.setDataSource(this, uri);
+//            mediaPlayer.setDataSource(pathString);
+             mediaPlayer.setDataSource(this, uri);
             // mediaPlayer.setDataSource(MainActivity.this, uri);
             // 设置异步加载视频，包括两种方式 prepare()同步，prepareAsync()异步
             mediaPlayer.prepareAsync();
@@ -339,7 +341,6 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
                 // 为空则重新设置mediaPlayer
                 playVideo();
             }
-
         }
         // 播放、暂停按钮
         if (v == playButton) {
@@ -574,10 +575,13 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
         String fileName = null;
         if (time >= 0) {
             try {
+//                Uri uri = Uri
+//                        .parse("http://183.61.13.14/vmind.qqvideo.tc.qq.com/x0200hkt1cg.p202.1.mp4");
                 Uri uri = Uri
-                        .parse("http://183.61.13.14/vmind.qqvideo.tc.qq.com/x0200hkt1cg.p202.1.mp4");
+                        .parse("http://app.ipicpic.top:8092/bao/zsq75.mp4");
                 MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
-                mediaMetadataRetriever.setDataSource(pathString);
+//                mediaMetadataRetriever.setDataSource(pathString);
+                mediaMetadataRetriever.setDataSource(this,uri);
                 // 获取视频的播放总时长单位为毫秒
                 String timeString = mediaMetadataRetriever
                         .extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
@@ -656,6 +660,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
             surfaceView.setLayoutParams(layoutParams);
             videoSizeButton.setText("全屏");
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         } else if ("全屏".equals(videoSizeString)) {
             // 设置全屏
             // 设置SurfaceView的大小并居中显示
@@ -664,6 +669,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
             surfaceView.setLayoutParams(layoutParams);
             videoSizeButton.setText("窗口");
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//强制为横屏
         }
     }
 }

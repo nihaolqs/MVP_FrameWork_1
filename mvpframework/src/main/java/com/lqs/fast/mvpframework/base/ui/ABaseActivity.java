@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lqs.fast.mvpframework.event.SingleEventBus;
+import com.lqs.fast.mvpframework.event.SingleHandler;
 import com.lqs.fast.mvpframework.event.message.StartActivityEvent;
 import com.squareup.otto.Subscribe;
 
@@ -15,11 +17,13 @@ import com.squareup.otto.Subscribe;
  */
 
 public abstract class ABaseActivity extends AppCompatActivity {
+
     @Override
-    public void onCreate(final Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {     //创建视图
+        super.onCreate(savedInstanceState);
         setContentView(getLayoutResources());
-        new Handler().post(new Runnable() {
+        Handler handler = SingleHandler.getInstance();
+        handler.post(new Runnable() {
             @Override
             public void run() {
                 initUi(savedInstanceState);

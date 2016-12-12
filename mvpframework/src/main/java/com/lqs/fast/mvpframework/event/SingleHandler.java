@@ -20,9 +20,9 @@ public class SingleHandler extends Handler {
         }
     }
 
-    public static Handler getInstance() throws Exception {
+    public static Handler getInstance() throws RuntimeException {
         if(sHandlerl == null){
-            throw new Exception("SingleHandler没有初始化!");
+            throw new RuntimeException("SingleHandler没有初始化!");
         }
         return sHandlerl;
     }
